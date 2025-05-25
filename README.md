@@ -1,34 +1,32 @@
-# MINERIA DE TEXTO
 # Análisis Comparativo de Textos: Rexixtenxia Norte vs. Operación Bin Laden
 
 ## Descripción General del Proyecto
 
-Este proyecto de análisis textual tuvo como objetivo aplicar técnicas de *minería de texto* y *procesamiento de lenguaje natural (PLN)* a dos documentos con temáticas y estilos narrativos completamente diferentes:
+Este proyecto de análisis textual tuvo como objetivo aplicar técnicas de minería de texto y procesamiento de lenguaje natural (PLN) a dos documentos con temáticas y estilos narrativos completamente diferentes:
 
-1. *"Rexixtenxia Norte"*: un comunicado emocional de la barra brava del Independiente Medellín previo a un clásico futbolero.
-2. *"Operación Bin Laden"*: un texto informativo que describe el operativo militar estadounidense que resultó en la muerte de Osama bin Laden.
+1. "Rexixtenxia Norte": un comunicado emocional de la barra brava del Independiente Medellín previo a un clásico futbolero.
+2. "Operación Bin Laden": un texto informativo que describe el operativo militar estadounidense que resultó en la muerte de Osama bin Laden.
 
 El propósito fue extraer patrones lingüísticos, estructuras gramaticales y relaciones semánticas que revelaran diferencias en tono, estilo, propósito comunicativo y temas tratados.
 
----
+## Etapas del Proyecto
+----------------------------------------
+### 1. Recolección de los textos
 
-##  Etapas del Proyecto
-
-### 1.Recolección de los textos
-Los textos fueron obtenidos en formato .txt y cargados al entorno de trabajo. Cada archivo contenía múltiples repeticiones del contenido base, lo que permitió trabajar con un corpus uniforme de 1000 palabras por texto.
-
+Los textos fueron obtenidos en formato `.txt` y cargados al entorno de trabajo. Cada archivo contenía múltiples repeticiones del contenido base, lo que permitió trabajar con un corpus uniforme de 1000 palabras por texto.
+-------------------------------------
 ### 2. Normalización del texto
-Se aplicó una función normalize() para limpiar los textos:
+
+Se aplicó una función `normalize()` para limpiar los textos:
 - Eliminación de etiquetas HTML.
 - Remoción de URLs.
 - Supresión de emojis y caracteres no ASCII.
 - Reemplazo de guiones especiales por espacios.
 - Conversión a minúsculas.
 - Eliminación de signos de puntuación y espacios redundantes.
-
-Este paso aseguró una base de datos textual homogénea para el análisis posterior.
-
+-------------------------------------------
 ### 3. Estadísticas básicas del contenido
+
 Se analizaron:
 - Número de párrafos.
 - Número de frases.
@@ -36,54 +34,95 @@ Se analizaron:
 
 Este análisis estructural permitió comparar la longitud y complejidad de los textos de forma inicial.
 
-### 4.Tokenización, lematización y eliminación de stopwords (con spaCy)
-Usando spaCy, se aplicaron las siguientes transformaciones:
-- *Tokenización*: división del texto en unidades léxicas (palabras).
-- *Lematización*: conversión de palabras a su forma base.
-- *Remoción de stopwords*: eliminación de palabras funcionales sin valor semántico fuerte (como "el", "de", "la", etc.).
+### 4. Tokenización, lematización y eliminación de stopwords (con spaCy)
 
-Esto permitió obtener las palabras más significativas y representativas de cada documento.
-
+Se aplicaron:
+- Tokenización: división del texto en unidades léxicas.
+- Lematización: transformación de palabras a su forma base.
+- Remoción de stopwords: eliminación de palabras comunes sin valor semántico.
+---------------------------------------------------
 ### 5. Análisis de frecuencia léxica
-Se contaron las palabras más frecuentes después del procesamiento lingüístico. Se identificaron las *top 30* por frecuencia y se analizaron las *top 5* para cada texto, revelando los temas centrales de cada uno:
 
-- *Rexixtenxia Norte*: barra, equipo, clásico, hinchada, jugadores.
-- *Operación Bin Laden*: bin, laden, operación, fuerzas, estadounidenses.
+Se identificaron las palabras más frecuentes en ambos textos para comprender los conceptos clave:
+
+- Rexixtenxia Norte: barra, equipo, clásico, hinchada, jugadores.
+- Operación Bin Laden: bin, laden, operación, fuerzas, estadounidenses.
 
 ### 6. Visualización mediante nubes de palabras
-Se generaron *nubes de palabras globales* y *nubes por categoría gramatical* (sustantivos, verbos y adjetivos). Estas visualizaciones facilitaron una comprensión intuitiva del contenido y del enfoque temático de cada documento.
+---------------------------------------
+Se generaron nubes de palabras globales y también por categoría gramatical (sustantivos, verbos, adjetivos), lo que permitió detectar de forma visual los temas y enfoques de cada texto.
 
-### 7.  Etiquetado gramatical (POS Tagging)
-Se aplicó análisis gramatical para clasificar las palabras por su categoría:
-- *Sustantivos*: revelan los temas clave.
-- *Verbos*: muestran las acciones más importantes.
-- *Adjetivos*: indican descripciones y tono emocional o técnico.
+### 7. Etiquetado gramatical (POS Tagging)
 
-Este análisis mostró que el texto de Rexixtenxia se centra en exigencias emocionales y colectivas, mientras que el de Bin Laden presenta un enfoque narrativo técnico y descriptivo.
-
+Se clasificaron palabras por tipo:
+- Sustantivos: temas y actores.
+- Verbos: acciones dominantes.
+- Adjetivos: tono y estilo narrativo.
+-------------------
 ### 8. Extracción de tripletas SVO (Sujeto–Verbo–Objeto)
-Se identificaron estructuras SVO representativas de cada texto:
 
-- *Rexixtenxia Norte*: (“barra”, “concluyó”, “jugadores”) → una construcción que refleja autoridad y presión emocional.
-- *Operación Bin Laden*: (“operativo”, “anunció”, “kilómetros”) → una estructura técnica, asociada a datos objetivos.
+Se analizaron estructuras como:
+- Rexixtenxia: ("barra", "concluyó", "jugadores") → tono crítico y emocional.
+- Bin Laden: ("operativo", "anunció", "kilómetros") → enfoque técnico y objetivo.
+------------------------------------------------------------
+## Hallazgos más importantes
 
-Esto permitió revelar cómo se construyen las relaciones entre actores, acciones y objetos en cada narrativa.
+### 1. Tonalidad contrastante
 
----
+- **Rexixtenxia Norte**: El texto adopta un tono emocional, exigente y colectivo. Se percibe un lenguaje apelativo dirigido a los jugadores, con expresiones de orgullo y compromiso por parte de la hinchada. La reiteración de frases como “esto no es solo un juego” refuerza la carga simbólica del mensaje.
+  
+- **Operación Bin Laden**: El tono es formal, descriptivo y objetivo. Se prioriza la claridad informativa sobre los hechos, destacando la participación de actores institucionales y detalles operativos. No hay juicios emocionales, sino una intención de relatar hechos de forma cronológica.
+
+### 2. Temas y actores centrales
+
+- **Rexixtenxia Norte**: Los actores principales son la barra, los hinchas y el equipo. Se construye una relación simbiótica entre estos, donde la hinchada tiene la autoridad moral para exigir entrega y respeto. El texto gira en torno al clásico paisa y su significado como evento de identidad local.
+- **Operación Bin Laden**: Los protagonistas son las fuerzas especiales estadounidenses, Barack Obama y Osama Bin Laden. El enfoque está puesto en el operativo como culminación de una estrategia militar. También aparecen actores secundarios como el gobierno pakistaní y la Casa Blanca.
+
+### 3. Verbos y acciones
+
+- **Rexixtenxia Norte**: Los verbos más frecuentes tienen un carácter exhortativo: exigir, apoyar, convocar, manifestar. Reflejan acciones de la hinchada hacia el equipo, demostrando un rol participativo y activo dentro del relato.
+- **Operación Bin Laden**: Se destacan verbos técnicos y narrativos como ejecutar, anunciar, localizar, abatir. Estos verbos relatan el desarrollo de un operativo real, con acciones planificadas y comunicadas oficialmente.
+
+### 4. Estilo narrativo
+
+- **Rexixtenxia Norte**: Estilo discursivo informal, directo y con repeticiones que refuerzan la idea de presión emocional. Se nota una fuerte carga valorativa que busca conmover o movilizar.
+- **Operación Bin Laden**: Estilo expositivo, objetivo y lineal. El texto está estructurado para informar de manera clara, sin subjetividades, ideal para un entorno periodístico o académico.
+
+### 5. Relaciones SVO (Sujeto–Verbo–Objeto)
+
+- **Rexixtenxia Norte**: Las tripletas extraídas (como “la barra concluyó jugadores”) evidencian un sujeto colectivo que ejerce juicio sobre otros. Esto refleja el papel activo de la hinchada como voz de autoridad emocional.
+- **Operación Bin Laden**: Tripletas como “el operativo anunció kilómetros” reflejan estructuras informativas, muchas veces impersonales. Se enfoca en la transmisión de hechos logísticos, distanciados de la subjetividad.
+
+### 6. Distribución gramatical por categoría (POS tagging)
+
+- **Rexixtenxia Norte**: Predominan los sustantivos relacionados con fútbol, hinchada y emociones; los verbos expresan exigencia o compromiso; los adjetivos refuerzan la carga emocional del mensaje (ej. “incondicional”, “crucial”).
+- **Operación Bin Laden**: Los sustantivos apuntan a conceptos militares y geopolíticos; los verbos están orientados a la acción estratégica; los adjetivos son más técnicos o geográficos (ej. “fortificada”, “militar”, “estadounidense”).
+
+### 7. Frecuencia léxica y temas clave
+
+- **Rexixtenxia Norte**: Palabras más frecuentes como barra, rexixtenxia, equipo, clásico, hinchada indican un enfoque centrado en el fútbol, la identidad barrista y la exigencia de compromiso.
+- **Operación Bin Laden**: Términos como bin, laden, operación, fuerzas, estadounidense muestran un texto técnico, basado en hechos históricos y militares.
+
+### 8. Visualización y comprensión rápida
+
+- Las **nubes de palabras** facilitaron la interpretación del contenido sin necesidad de leer línea por línea.
+- En Rexixtenxia, las nubes mostraron un entorno semántico afectivo y simbólico; en Bin Laden, un contexto operacional y noticioso.
+
+
+--------------------------------------------------------------------------
 
 ## Conclusiones Finales
 
-- La *minería de texto* permitió identificar *temas, actores y estructuras discursivas* dominantes sin necesidad de leer manualmente cada línea.
-- Se evidenciaron *diferencias claras de tono y propósito*: uno emocional y colectivo, el otro técnico e institucional.
-- El uso de *spaCy* y técnicas de PLN demostró ser eficaz para convertir datos textuales complejos en *información estructurada y visualmente comprensible*.
-- La combinación de métodos cuantitativos y lingüísticos permitió realizar un análisis profundo y comparativo que va más allá del contenido superficial de los textos
-
---------------------------------------
-
+- La minería de texto permitió identificar temas, actores y estructuras discursivas sin leer todo manualmente.
+- Las técnicas de PLN aplicadas facilitaron una lectura profunda y comparativa.
+- El análisis sintáctico y las visualizaciones aportaron una comprensión más rica de cada documento.
+- Las diferencias entre textos no solo radican en el tema, sino en cómo están construidos lingüísticamente.
+---------------------------------------
 ## Archivos involucrados
-- REXIXTENXIA NORTE.txt
-- OPERATIVO.txt
------------------------------------------
+
+- `REXIXTENXIA NORTE.txt`
+- `OPERATIVO.txt`
+-------------------------------
 
 ## ✍️ Autor
 Juan Esteban Sierra  
